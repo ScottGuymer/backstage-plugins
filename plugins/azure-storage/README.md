@@ -2,6 +2,20 @@
 
 Welcome to the `AzureStorage` plugin!
 
+## Intruduction
+
+This plugin helps to explore (navigate and download) the blobs in Azure storage account.
+
+![1](docs/1.png)
+
+![2](docs/2.png)
+
+![3](docs/3.png)
+
+![4](docs/4.png)
+
+![5](docs/5.png)
+
 ## Getting started
 
 ### AzureStorage Installation
