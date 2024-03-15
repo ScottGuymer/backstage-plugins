@@ -37,7 +37,7 @@
   "dependencies": {
     "@azure/identity": "4.0.0",
     "@azure/storage-blob": "12.17.0",
-    "@backstage/backend-common": "^0.19.8",
+    "@backstage/backend-common": "^0.21.3",
     "@backstage/config": "^1.1.1",
     "@backstage/errors": "^1.2.3",
     "@types/express": "*",
@@ -48,7 +48,7 @@
     "yn": "^4.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.23.1",
+    "@backstage/cli": "^0.25.2",
     "@types/supertest": "^2.0.12",
     "msw": "^1.0.0",
     "supertest": "^6.2.4"
