@@ -10,7 +10,7 @@ This plugin needs to be added to an existing backstage instance.
 
 ```bash
 # From your Backstage root directory
-yarn add --cwd packages/backend backstage-plugin-blackduck-backend
+yarn --cwd packages/backend add backstage-plugin-blackduck-backend
 ```
 
 ### New Backend System
