@@ -26,6 +26,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import FolderIcon from '@material-ui/icons/Folder';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -75,6 +76,11 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
       </SidebarGroup>
+      <SidebarItem
+        icon={FolderIcon}
+        to="azure-storage"
+        text="Azure Storage Explorer"
+      ></SidebarItem>
       <SidebarSpace />
       <SidebarDivider />
       <SidebarGroup

@@ -21,7 +21,6 @@ export class AzureStorageProvider {
 
   listAccounts() {
     const accountList = [];
-    console.log(this.azureStorageConfig);
     for (const account of this.azureStorageConfig.blobContainers) {
       accountList.push(account.accountName);
     }
@@ -31,8 +30,6 @@ export class AzureStorageProvider {
   protected getblobServiceClient(storageAccount: string) {
     let credentialProvider;
     for (const account of this.azureStorageConfig.blobContainers) {
-      console.log(account.accountName);
-      console.log(storageAccount);
       if (account.accountName === storageAccount) {
         if (account.authType === 'accessToken') {
           credentialProvider = new StorageSharedKeyCredential(
@@ -60,10 +57,8 @@ export class AzureStorageProvider {
     const blobServiceClient = this.getblobServiceClient(storageAccount);
     const contianerList = [];
     for await (const container of blobServiceClient.listContainers()) {
-      console.log(`- ${container.name}`);
       contianerList.push(container.name);
     }
-    console.log(contianerList);
     return contianerList;
   }
 
@@ -74,14 +69,12 @@ export class AzureStorageProvider {
   ) {
     const blobServiceClient = this.getblobServiceClient(storageAccount);
     const containerClient = blobServiceClient.getContainerClient(containerName);
-    console.log(`prefiox ${prefix}`);
     const items = containerClient.listBlobsByHierarchy('/', {
       prefix: prefix === undefined ? '' : prefix,
     });
     const blobList = [];
     for await (const item of items) {
       if (item.kind === 'prefix') {
-        console.log(`Blob: ${item.name.slice(0, -1)}`);
         blobList.push({
           filename: item.name.slice(0, -1).includes('/')
             ? item.name.slice(0, -1).split('/').pop()?.concat('/')
@@ -92,7 +85,6 @@ export class AzureStorageProvider {
           contentLength: '',
         });
       } else {
-        console.log(`Blob: ${item.name}`);
         const blobClient = containerClient.getBlobClient(item.name);
         const blobProps = await blobClient.getProperties();
         blobList.push({
@@ -106,7 +98,6 @@ export class AzureStorageProvider {
         });
       }
     }
-    console.log(blobList);
     return blobList;
   }
 

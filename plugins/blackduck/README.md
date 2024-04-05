@@ -43,7 +43,7 @@ Import the plugin to `packages/app/src/components/catalog/EntityPage.tsx`.
 
 ```typescript
 // ...
-import { BlackduckCard } from 'backstage-plugin-blackduck';
+import { BlackDuckCard } from 'backstage-plugin-blackduck';
 // ...
 const overviewContent = (
     <Grid container spacing={3} alignItems="stretch">
@@ -53,7 +53,7 @@ const overviewContent = (
     </Grid>
     //...
     <Grid item md={4} xs={12}>
-      <BlackduckCard />
+      <BlackDuckCard />
     </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />

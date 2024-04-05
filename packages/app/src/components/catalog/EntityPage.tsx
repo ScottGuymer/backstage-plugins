@@ -57,6 +57,12 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import {
+  BlackDuckCard,
+  RiskCard,
+  BlackDuckPage,
+  isBlackDuckAvailable,
+} from 'backstage-plugin-blackduck';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -134,6 +140,12 @@ const overviewContent = (
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
+    <Grid item md={4} xs={12}>
+      <BlackDuckCard />
+    </Grid>
+    <Grid item md={4} xs={12}>
+      <RiskCard />
+    </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
@@ -159,6 +171,14 @@ const serviceEntityPage = (
           <EntityConsumedApisCard />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      if={isBlackDuckAvailable}
+      path="/blackduck"
+      title="BlackDuck"
+    >
+      <BlackDuckPage />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
@@ -300,8 +320,11 @@ const groupPage = (
         <Grid item xs={12} md={6}>
           <EntityOwnershipCard variant="gridItem" />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <EntityMembersListCard />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <EntityLinksCard />
         </Grid>
       </Grid>
     </EntityLayout.Route>

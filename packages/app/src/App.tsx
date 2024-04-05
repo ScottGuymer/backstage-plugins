@@ -27,13 +27,18 @@ import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
 
-import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
+import {
+  AlertDisplay,
+  OAuthRequestDialog,
+  SignInPage,
+} from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
-import { BlackDuckPage } from 'backstage-plugin-blackduck';
+
+import { AzureStoragePage } from 'backstage-plugin-azure-storage';
 
 const app = createApp({
   apis,
@@ -53,6 +58,9 @@ const app = createApp({
     bind(orgPlugin.externalRoutes, {
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
+  },
+  components: {
+    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
 });
 
@@ -94,7 +102,8 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
-    <Route path="/blackduck" element={<BlackDuckPage />} />
+    <Route path="/azure-storage" element={<AzureStoragePage />} />
+    
   </FlatRoutes>
 );
 
